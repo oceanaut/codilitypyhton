@@ -1,2 +1,2 @@
 # codilitypyhton
-codility lessons in python
+codility lessons in python3

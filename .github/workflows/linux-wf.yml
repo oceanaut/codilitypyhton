@@ -21,6 +21,4 @@ jobs:
 #      - name: Display Python version
 #        run: python -c "import sys; print(sys.version)"
       - name: "Run BinaryGap"
-        run: |
-          ls -lai
-          python lesson1/iterations/BinaryGap.py
+        run: python lesson1/iterations/BinaryGap.py

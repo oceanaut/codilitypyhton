@@ -1,13 +1,18 @@
-name: "Python package"
+name: "ubuntu Python package"
 
-on: [push]
+on:
+  push:
+    branches: [ master ]
+  schedule:
+      - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month
 
 jobs:
 
   build:
-
+    name: "build ubuntu-latest"
     runs-on: ubuntu-latest
-
+    env:
+      sourcecode: "lesson1/iterations/BinaryGap.py"
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.x
@@ -17,8 +22,28 @@ jobs:
           python-version: '3.x'
           # Optional - x64 or x86 architecture, defaults to x64
           architecture: 'x64'
-      # You can test your matrix by printing the current Python version
-#      - name: Display Python version
-#        run: python -c "import sys; print(sys.version)"
       - name: "Run BinaryGap"
-        run: python lesson1/iterations/BinaryGap.py
+        run: python ${sourcecode}
+
+  test:
+    name: "Test with pytest ubuntu-latest"
+    runs-on: ubuntu-latest
+    env:
+      sourcecode: "lesson1/iterations/BinaryGap.py"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v2
+        with:
+          # Semantic version range syntax or exact version of a Python version
+          python-version: '3.x'
+          # Optional - x64 or x86 architecture, defaults to x64
+          architecture: 'x64'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade
+          pip install -r requirements.txt
+      - name: "Test with pytest"
+        run: |
+          pytest tests.py --doctest-modules --junitxml=junit/test-results.xml \
+            --cov=com --cov-report=xml --cov-report=html

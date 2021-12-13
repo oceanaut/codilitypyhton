@@ -32,7 +32,10 @@ jobs:
       - name: "cryptographically secure random passwords - bash"
         run: |
           #uses /dev/urandom to generate a password
-          function mkpw() { LC_ALL=C tr -dc '[:graph:]' < /dev/urandom | head -c ${1:-16}; echo; }
+          #This function takes password length as a parameter, or uses 16 by default
+          #function mkpw() { LC_ALL=C tr -dc '[:graph:]' < /dev/urandom | head -c ${1:-16}; echo; }
+          #outputs the top 32
+          < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;
 
   test:
     name: "Test with pytest ubuntu-latest"

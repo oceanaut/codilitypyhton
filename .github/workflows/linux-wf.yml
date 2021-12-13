@@ -28,7 +28,7 @@ jobs:
         run: python fileoperations/LogParser.py
       - name: "cryptographically secure random passwords - python"
         run: python passwords/CryptGenRandom.py
-     - name: "cryptographically secure random passwords - java"
+      - name: "cryptographically secure random passwords - java"
         run: java CryptGenRandom.java
         #https://en.wikipedia.org/wiki/Random_password_generator
         #A variety of methods exist for generating strong, cryptographically secure random passwords. On Unix platforms

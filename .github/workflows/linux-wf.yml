@@ -26,8 +26,10 @@ jobs:
         run: python ${sourcecode}
       - name: "Run LogParser"
         run: python fileoperations/LogParser.py
-      - name: "Run CryptGenRandom"
+      - name: "cryptographically secure random passwords - python"
         run: python passwords/CryptGenRandom.py
+     - name: "cryptographically secure random passwords - java"
+        run: java CryptGenRandom.java
         #https://en.wikipedia.org/wiki/Random_password_generator
         #A variety of methods exist for generating strong, cryptographically secure random passwords. On Unix platforms
         #/dev/random and /dev/urandom are commonly used, either programmatically or in conjunction with a program such as makepasswd
@@ -41,10 +43,10 @@ jobs:
           #in reverse
           tr -cd '[:alnum:]' < /dev/urandom | fold -w30 | head -n1
           strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo
-          < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c6
-          dd if=/dev/urandom bs=1 count=32 2>/dev/null | base64 -w 0 | rev | cut -b 2- | rev
-          #outputs 32
-          openssl rand -base64 32
+#          < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c6
+#          dd if=/dev/urandom bs=1 count=32 2>/dev/null | base64 -w 0 | rev | cut -b 2- | rev
+#          #outputs 32
+#          openssl rand -base64 32
 
   test:
     name: "Test with pytest ubuntu-latest"

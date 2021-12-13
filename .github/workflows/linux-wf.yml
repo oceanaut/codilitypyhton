@@ -24,6 +24,8 @@ jobs:
           architecture: 'x64'
       - name: "Run BinaryGap"
         run: python ${sourcecode}
+      - name: "Run LogParser"
+        run: python fileoperations/LogParser.py
 
   test:
     name: "Test with pytest ubuntu-latest"

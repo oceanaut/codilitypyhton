@@ -41,8 +41,8 @@ jobs:
           #outputs the top 32
           < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;
           #in reverse
-          tr -cd '[:alnum:]' < /dev/urandom | fold -w30 | head -n1
-          strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo
+#          tr -cd '[:alnum:]' < /dev/urandom | fold -w30 | head -n1
+#          strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo
 #          < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c6
 #          dd if=/dev/urandom bs=1 count=32 2>/dev/null | base64 -w 0 | rev | cut -b 2- | rev
 #          #outputs 32

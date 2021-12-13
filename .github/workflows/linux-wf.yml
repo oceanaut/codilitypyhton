@@ -26,6 +26,13 @@ jobs:
         run: python ${sourcecode}
       - name: "Run LogParser"
         run: python fileoperations/LogParser.py
+        #https://en.wikipedia.org/wiki/Random_password_generator
+        #A variety of methods exist for generating strong, cryptographically secure random passwords. On Unix platforms
+        #/dev/random and /dev/urandom are commonly used, either programmatically or in conjunction with a program such as makepasswd
+      - name: "cryptographically secure random passwords - bash"
+        run: |
+          #uses /dev/urandom to generate a password
+          function mkpw() { LC_ALL=C tr -dc '[:graph:]' < /dev/urandom | head -c ${1:-16}; echo; }
 
   test:
     name: "Test with pytest ubuntu-latest"

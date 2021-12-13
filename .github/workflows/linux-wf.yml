@@ -22,6 +22,11 @@ jobs:
           python-version: '3.x'
           # Optional - x64 or x86 architecture, defaults to x64
           architecture: 'x64'
+      - name: "Run Apache parser"
+        run: |
+          python fileoperations/parser.py access.log subscriptions
+          python fileoperations/parser.py access.log uri --quantity 5
+          python fileoperations/parser.py access.log agent --cutoff 100
       - name: "Run BinaryGap"
         run: python ${sourcecode}
       - name: "Run LogParser"

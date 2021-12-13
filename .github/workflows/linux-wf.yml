@@ -29,7 +29,7 @@ jobs:
       - name: "cryptographically secure random passwords - python"
         run: python passwords/CryptGenRandom.py
       - name: "cryptographically secure random passwords - java"
-        run: java CryptGenRandom.java
+        run: java passwords/CryptGenRandom.java
         #https://en.wikipedia.org/wiki/Random_password_generator
         #A variety of methods exist for generating strong, cryptographically secure random passwords. On Unix platforms
         #/dev/random and /dev/urandom are commonly used, either programmatically or in conjunction with a program such as makepasswd

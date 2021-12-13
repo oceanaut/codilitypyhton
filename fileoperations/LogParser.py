@@ -1,6 +1,7 @@
 import json
 
-file_name = "log.txt"
+# file_name = "log.txt"
+file_name = "fileoperations/log.txt"
 file = open(file_name, "r")
 data = []
 order = ["date", "url", "type", "message"]
